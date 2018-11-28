@@ -1,9 +1,17 @@
 package com.example.demo.model;
 
-public class AyUser {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "ay_user")
+public class User {
+
+    @Id
+    @GeneratedValue
     private String id;
+    @Column(length = 10)
     private String name;
+    @Column(length = 32)
     private String password;
 
     public String getId() {
