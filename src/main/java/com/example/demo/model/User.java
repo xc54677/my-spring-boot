@@ -1,13 +1,13 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ay_user")
-public class User {
+public class User implements Serializable {
 
     @Id
-    @GeneratedValue
     private String id;
     @Column(length = 10)
     private String name;
