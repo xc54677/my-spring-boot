@@ -1,4 +1,5 @@
 SpringBoot2.X整合JPA/Hibernate过程中出现的问题:
+1.
 com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.demo.model.User_$$_jvstcc3_0["handler"])
 问题背景为使用jackjson将对象json化的时候出现的错误.
 
@@ -17,3 +18,14 @@ com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer fou
     public ObjectMapper objectMapper() {
         return new ObjectMapper().disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     }
+    
+2.
+使用 JPA 出现的异常 ：
+
+org.hibernate.LazyInitializationException: could not initialize proxy [com.example.demo.model.User#1] - no Session
+
+问题是 jpa或hibernate的延迟加载的问题
+
+可在 配置文件中加上以下配置 ：
+
+spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true

@@ -9,9 +9,9 @@ public class User implements Serializable {
 
     @Id
     private String id;
-    @Column(length = 10)
+
     private String name;
-    @Column(length = 32)
+
     private String password;
 
     public String getId() {
